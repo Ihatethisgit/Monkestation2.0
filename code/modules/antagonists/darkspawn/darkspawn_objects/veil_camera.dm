@@ -39,6 +39,8 @@ GLOBAL_DATUM_INIT(thrallnet, /datum/cameranet/darkspawn, new)
 	name = "Jump To Ally"
 
 /datum/action/innate/camera_jump/darkspawn/Activate()
+	if(!owner || !IS_TEAM_DARKSPAWN(owner))
+		continue
 	if(!owner || !isliving(owner))
 		return
 	var/mob/eye/ai_eye/remote/remote_eye = owner.remote_control
