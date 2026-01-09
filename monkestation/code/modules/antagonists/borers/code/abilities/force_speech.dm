@@ -17,6 +17,12 @@
 	if(!borer_message)
 		owner.balloon_alert(owner, "no message given")
 		return
+	if(borer_message == *faint)
+		owner.balloon_alert(owner, "you cannot force your host to faint!")
+		return
+	if(borer_message == *surrender)
+		owner.balloon_alert(owner, "you cannot force your host to surrender!")
+		return
 	var/mob/living/carbon/human/cortical_host = cortical_owner.human_host
 	to_chat(cortical_host, span_boldwarning("Your voice moves without your permission!"))
 	cortical_host.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2 * cortical_owner.host_harm_multiplier, maximum = BRAIN_DAMAGE_SEVERE)
